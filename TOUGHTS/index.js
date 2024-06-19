@@ -9,6 +9,12 @@ const app = express() //inicialização do express
 
 const conn = require ('./db/conn')
 //1
+
+//3
+const Tought = require('./models/Tought')
+const User = require('./models/User')
+//3
+
 //2
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars') 
@@ -56,7 +62,7 @@ app.use((req, res, next) => {
 //2
 //1
 conn
-    .sync()
+    .sync({ force: true })
     .then(() => {
         app.listen(4000)
     })
